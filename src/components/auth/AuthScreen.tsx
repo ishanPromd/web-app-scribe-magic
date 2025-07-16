@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Lock, User, Eye, EyeOff, AlertCircle, Clock, UserPlus, LogIn, ArrowLeft, Shield, CheckCircle, Sparkles, Zap, Star } from 'lucide-react';
+import { Mail, Lock, User, Eye, EyeOff, Clock, CheckCircle, Sparkles, Star, Shield, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
-import { Button } from '../ui/button';
+import { Button } from '../ui/Button';
 import toast, { Toaster } from 'react-hot-toast';
 
 export const AuthScreen: React.FC = () => {
@@ -94,7 +94,7 @@ export const AuthScreen: React.FC = () => {
     } else {
       const result = await signIn(email, password);
       // If sign in fails with invalid credentials for demo accounts, suggest creating the account
-      if (result.error && result.error.message.includes('Invalid login credentials')) {
+      if (result.error && typeof result.error === 'string' && result.error.includes('Invalid login credentials')) {
         if (email === 'ishanstc123@gmail.com' || email === 'demo@example.com') {
           toast.error('Demo account not found. Click "Create Demo Account" to set it up first.', {
             duration: 5000,

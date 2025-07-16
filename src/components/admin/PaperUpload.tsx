@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Upload, FileText, X, Check, AlertCircle, Plus, Trash2, ArrowLeft, ArrowRight, Save, Image, Camera, Link, Loader2 } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
+import { Upload, FileText, X, Plus, Trash2, ArrowLeft, ArrowRight, Save, Image, Camera, Link, Loader2 } from 'lucide-react';
+import { Button } from '../ui/Button';
+import { Card } from '../ui/Card';
+import { Badge } from '../ui/Badge';
 import { JsonQuestionImporter } from './JsonQuestionImporter';
 import { useData } from '../../hooks/useData';
 import { useAuth } from '../../hooks/useAuth';

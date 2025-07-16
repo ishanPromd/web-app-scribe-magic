@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useData } from '../../hooks/useData';
 import { useAuth } from '../../hooks/useAuth';
-import { Button } from '../ui/button';
+import { Button } from '../ui/Button';
 import { PlyrPlayer } from '../user/PlyrPlayer';
 import { VideoUploadModal } from '../user/VideoUploadModal';
 import { SubjectManagementModal } from './SubjectManagementModal';

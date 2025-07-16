@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { X, Plus, Trash2, Save, ArrowLeft, Camera, Link, Loader2, Image } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
+import { Button } from '../ui/Button';
+import { Card } from '../ui/Card';
+import { Badge } from '../ui/Badge';
 import { Quiz, Question } from '../../types';
 import { useAuth } from '../../hooks/useAuth';
 import { supabase } from '../../lib/supabase';
