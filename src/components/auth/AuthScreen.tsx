@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Lock, User, Eye, EyeOff, AlertCircle, Clock, UserPlus, LogIn, ArrowLeft, Shield, CheckCircle, Sparkles, Zap, Star } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import toast, { Toaster } from 'react-hot-toast';
 
 export const AuthScreen: React.FC = () => {

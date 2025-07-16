@@ -14,7 +14,7 @@ import { NotificationSystem } from './components/notifications/NotificationSyste
 import { DeveloperToolsDetectedPage } from './components/security/DeveloperToolsDetectedPage';
 import { DeveloperToolsGuard } from './components/security/DeveloperToolsGuard';
 import { Toaster } from 'react-hot-toast';
-import { useDeveloperToolsProtection } from './hooks/useDeveloperToolsProtection';
+
 
 const AppRoutes: React.FC = () => {
   const { user, loading, isAdmin } = useAuth();

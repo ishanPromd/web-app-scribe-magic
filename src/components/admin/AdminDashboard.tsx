@@ -5,13 +5,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome, faFileText, faRss, faBell, faUser, faPlus, faEdit, faTrash,
   faUpload, faBrain, faSignOutAlt, faChartLine, faUsers, faTrophy, faCog,
-  faBookOpen, faPlay, faEye, faDownload, faPaperPlane
+  faPaperPlane
 } from '@fortawesome/free-solid-svg-icons';
 import { useData } from '../../hooks/useData';
 import { useAuth } from '../../hooks/useAuth';
-import { Card } from '../ui/Card';
-import { Button } from '../ui/Button';
-import { Badge } from '../ui/Badge';
+import { Card } from '../ui/card';
+import { Button } from '../ui/button';
+import { Badge } from '../ui/badge';
 import { PaperUpload } from './PaperUpload';
 import { QuizCreator } from './QuizCreator';
 import { QuizEditor } from './QuizEditor';
@@ -23,7 +23,7 @@ import { supabase } from '../../lib/supabase';
 import toast from 'react-hot-toast';
 
 export const AdminDashboard: React.FC = () => {
-  const { papers, quizzes, notifications, loading, sendBroadcastNotification, updateUserRole, deletePaper, deleteQuiz, updateQuiz } = useData();
+  const { papers, quizzes, notifications, loading, sendBroadcastNotification, deletePaper, updateQuiz } = useData();
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -44,7 +44,7 @@ export const AdminDashboard: React.FC = () => {
     icon: 'star'
   });
   const [sendingBroadcast, setSendingBroadcast] = useState(false);
-  const [users, setUsers] = useState<any[]>([]);
+  
   const [stats, setStats] = useState<AdminStats>({
     totalUsers: 0,
     totalPapers: 0,
@@ -84,8 +84,6 @@ export const AdminDashboard: React.FC = () => {
 
       if (usersError) {
         console.error('Error loading users:', usersError);
-      } else {
-        setUsers(usersData || []);
       }
 
       // Calculate stats
@@ -371,8 +369,7 @@ export const AdminDashboard: React.FC = () => {
                   </div>
                   <Button
                     onClick={handleSendBroadcast}
-                    disabled={!broadcastForm.title || !broadcastForm.message}
-                    loading={sendingBroadcast}
+                    disabled={!broadcastForm.title || !broadcastForm.message || sendingBroadcast}
                     className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700"
                   >
                     <FontAwesomeIcon icon={faPaperPlane} className="w-4 h-4 mr-2" />
@@ -401,8 +398,8 @@ export const AdminDashboard: React.FC = () => {
                       <div className="flex-1">
                         <h3 className="font-semibold text-gray-900 mb-1">{paper.title}</h3>
                         <div className="flex items-center space-x-2">
-                          <Badge variant="primary" size="sm">{paper.subject}</Badge>
-                          <Badge variant="secondary" size="sm">{paper.year}</Badge>
+                          <Badge variant="default">{paper.subject}</Badge>
+                          <Badge variant="secondary">{paper.year}</Badge>
                         </div>
                       </div>
                       <div className="flex space-x-2">
@@ -457,8 +454,8 @@ export const AdminDashboard: React.FC = () => {
                         <h3 className="font-semibold text-gray-900">{notification.title}</h3>
                         <p className="text-sm text-gray-600 mt-1">{notification.message}</p>
                         <div className="flex items-center space-x-2 mt-2">
-                          <Badge variant="primary" size="sm">{notification.type}</Badge>
-                          <Badge variant="secondary" size="sm">{notification.priority}</Badge>
+                          <Badge variant="default">{notification.type}</Badge>
+                          <Badge variant={notification.priority === 'high' ? 'destructive' : 'secondary'}>{notification.priority}</Badge>
                         </div>
                       </div>
                       <span className="text-xs text-gray-500">
@@ -484,7 +481,7 @@ export const AdminDashboard: React.FC = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">{user?.name}</h3>
                     <p className="text-sm text-gray-600">{user?.email}</p>
-                    <Badge variant="primary" size="sm">Administrator</Badge>
+                    <Badge variant="default">Administrator</Badge>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, Save, Type, Edit3 } from 'lucide-react';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
@@ -13,7 +13,11 @@ interface TextCustomizationModalProps {
     featuredSectionTitle: string;
   };
   onClose: () => void;
-  onSave: (texts: typeof currentTexts) => void;
+  onSave: (texts: {
+    heroTitle: string;
+    heroSubtitle: string;
+    featuredSectionTitle: string;
+  }) => void;
 }
 
 export const TextCustomizationModal: React.FC<TextCustomizationModalProps> = ({

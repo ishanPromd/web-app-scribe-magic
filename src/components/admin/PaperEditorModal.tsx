@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { X, Save, FileText, Image, Link } from 'lucide-react';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import toast from 'react-hot-toast';
 
 interface PaperEditorModalProps {

@@ -4,17 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faHome, faFileText, faRss, faBell, faUser, faPlay, faSignOutAlt,
-  faChevronDown, faBookOpen, faPlus, faEdit, faTrash, faArrowLeft, faArrowUp, faArrowDown, faVideo, faGift
+  faBookOpen, faPlus, faEdit, faTrash, faArrowLeft, faArrowUp, faArrowDown, faVideo, faGift
 } from '@fortawesome/free-solid-svg-icons';
 import { useData } from '../../hooks/useData';
 import { useAuth } from '../../hooks/useAuth';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import { PlyrPlayer } from '../user/PlyrPlayer';
 import { VideoUploadModal } from '../user/VideoUploadModal';
 import { SubjectManagementModal } from './SubjectManagementModal';
 import { LessonManagementModal } from '../user/LessonManagementModal';
 import { VideoEditModal } from './VideoEditModal';
-import { extractVideoId, extractVideoDurationFromEmbed, getYouTubeThumbnail } from '../../utils/youtube';
+import { getYouTubeThumbnail } from '../../utils/youtube';
 import { supabase } from '../../lib/supabase';
 import toast from 'react-hot-toast';
 

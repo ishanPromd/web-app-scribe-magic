@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Brain, Plus, X, Trash2, Save, ArrowLeft, ArrowRight } from 'lucide-react';
-import { Button } from '../ui/Button';
-import { Card } from '../ui/Card';
-import { Badge } from '../ui/Badge';
+import { Brain, Plus, X, Trash2, Save, ArrowLeft, ArrowRight, FileText } from 'lucide-react';
+import { Button } from '../ui/button';
+import { Card } from '../ui/card';
+import { Badge } from '../ui/badge';
 import { JsonQuestionImporter } from './JsonQuestionImporter';
 import { useData } from '../../hooks/useData';
 import { useAuth } from '../../hooks/useAuth';
