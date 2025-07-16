@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { User as SupabaseUser } from '@supabase/supabase-js';
-import { supabase, signInWithEmail, signUpWithEmail, signOut as supabaseSignOut } from '../lib/supabase';
+import { supabase, signInWithEmail, signUpWithEmail, signInWithGoogle, signOut as supabaseSignOut } from '../lib/supabase';
 import { clearAuthTokens } from '../lib/supabase-setup';
 import { User } from '../types';
+import { validateEmail } from '../lib/emailValidation';
 import toast from 'react-hot-toast';
 
 export const useAuth = () => {
@@ -73,6 +74,29 @@ export const useAuth = () => {
         }
         
         if (session?.user) {
+          // Validate email before proceeding
+          const email = session.user.email;
+          if (email) {
+            const validation = validateEmail(email);
+            if (!validation.isValid) {
+              if (validation.reason === 'banned') {
+                console.warn(`Login blocked for banned email: ${email}`);
+                toast.error('Your account has been suspended. Contact administrator.');
+                await supabaseSignOut();
+                setUser(null);
+                setLoading(false);
+                return;
+              } else if (validation.reason === 'not_allowed') {
+                console.warn(`Login denied for non-allowed email: ${email}`);
+                toast.error('Access denied. Your email is not registered. Please contact the administrator.');
+                await supabaseSignOut();
+                setUser(null);
+                setLoading(false);
+                return;
+              }
+            }
+          }
+          
           await fetchUserProfile(session.user);
         } else {
           setUser(null);
@@ -389,6 +413,30 @@ export const useAuth = () => {
     }
   };
 
+  const signInWithGoogleAuth = async () => {
+    try {
+      setLoading(true);
+      console.log('useAuth: Attempting Google sign in');
+      
+      const { error } = await signInWithGoogle();
+      
+      if (error) {
+        console.error('Google sign in error:', error);
+        toast.error(`Google sign in failed: ${error.message}`);
+        return { error };
+      }
+      
+      console.log('useAuth: Google sign in initiated');
+      return { error: null };
+    } catch (error) {
+      console.error('Google sign in error:', error);
+      toast.error('An unexpected error occurred during Google sign in');
+      return { error };
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const signOut = async () => {
     try {
       console.log('useAuth: Signing out');
@@ -415,6 +463,7 @@ export const useAuth = () => {
     loading,
     signIn,
     signUp,
+    signInWithGoogle: signInWithGoogleAuth,
     signOut,
     resetPassword,
     isAdmin,
