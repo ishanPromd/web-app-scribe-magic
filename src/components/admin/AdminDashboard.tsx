@@ -9,7 +9,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useData } from '../../hooks/useData';
 import { useAuth } from '../../hooks/useAuth';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
+import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
 import { PaperUpload } from './PaperUpload';
@@ -398,7 +398,7 @@ export const AdminDashboard: React.FC = () => {
                       <div className="flex-1">
                         <h3 className="font-semibold text-gray-900 mb-1">{paper.title}</h3>
                         <div className="flex items-center space-x-2">
-                          <Badge variant="primary">{paper.subject}</Badge>
+                          <Badge variant="default">{paper.subject}</Badge>
                           <Badge variant="secondary">{paper.year}</Badge>
                         </div>
                       </div>
@@ -454,8 +454,8 @@ export const AdminDashboard: React.FC = () => {
                         <h3 className="font-semibold text-gray-900">{notification.title}</h3>
                         <p className="text-sm text-gray-600 mt-1">{notification.message}</p>
                         <div className="flex items-center space-x-2 mt-2">
-                          <Badge variant="primary">{notification.type}</Badge>
-                          <Badge variant={notification.priority === 'high' ? 'error' : 'secondary'}>{notification.priority}</Badge>
+                          <Badge variant="default">{notification.type}</Badge>
+                          <Badge variant={notification.priority === 'high' ? 'destructive' : 'secondary'}>{notification.priority}</Badge>
                         </div>
                       </div>
                       <span className="text-xs text-gray-500">
@@ -481,7 +481,7 @@ export const AdminDashboard: React.FC = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-900">{user?.name}</h3>
                     <p className="text-sm text-gray-600">{user?.email}</p>
-                    <Badge variant="primary">Administrator</Badge>
+                    <Badge variant="default">Administrator</Badge>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

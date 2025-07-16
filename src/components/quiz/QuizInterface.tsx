@@ -9,9 +9,11 @@ import {
   ZoomIn,
   Maximize2,
 } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '../ui/Button';
 import { Quiz, QuizSession, QuizResponse } from '../../types';
-
+import { useAuth } from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 
 interface QuizInterfaceProps {
@@ -21,6 +23,7 @@ interface QuizInterfaceProps {
 }
 
 export const QuizInterface: React.FC<QuizInterfaceProps> = ({ quiz, onComplete, onExit }) => {
+  const { user } = useAuth();
   const [session, setSession] = useState<QuizSession | null>(null);
   const [showStartScreen, setShowStartScreen] = useState(true);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);

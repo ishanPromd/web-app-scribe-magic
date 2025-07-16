@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, Plus, X, Trash2, Save, ArrowLeft, ArrowRight, FileText } from 'lucide-react';
 import { Button } from '../ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
+import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { JsonQuestionImporter } from './JsonQuestionImporter';
 import { useData } from '../../hooks/useData';

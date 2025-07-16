@@ -66,7 +66,7 @@ const CustomLoader: React.FC = () => (
   <div className="min-h-screen bg-white flex items-center justify-center px-4">
     <div className="text-center">
       <div className="loader mb-4"></div>
-      <style>{`
+      <style jsx>{`
         .loader {
           width: fit-content;
           margin: 0 auto;
