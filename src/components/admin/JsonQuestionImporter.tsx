@@ -101,7 +101,7 @@ export const JsonQuestionImporter: React.FC<JsonQuestionImporterProps> = ({ onIm
             // Multiple correct answers
             if (item.correct_answer.length === 0) {
               validationErrors.push(`Question ${questionNum}: correct_answer array cannot be empty`);
-            } else if (item.correct_answer.some(ans => typeof ans !== 'number' || ans < 1 || ans > 5)) {
+            } else if (item.correct_answer.some((ans: number) => typeof ans !== 'number' || ans < 1 || ans > 5)) {
               validationErrors.push(`Question ${questionNum}: all correct_answer values must be numbers between 1 and 5`);
             } else if (new Set(item.correct_answer).size !== item.correct_answer.length) {
               validationErrors.push(`Question ${questionNum}: correct_answer array cannot contain duplicate values`);
