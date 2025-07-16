@@ -8,7 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useData } from '../../hooks/useData';
 import { useAuth } from '../../hooks/useAuth';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import { PlyrPlayer } from '../user/PlyrPlayer';
 import { VideoUploadModal } from '../user/VideoUploadModal';
 import { SubjectManagementModal } from './SubjectManagementModal';
@@ -66,7 +66,7 @@ const CustomLoader: React.FC = () => (
   <div className="min-h-screen bg-white flex items-center justify-center px-4">
     <div className="text-center">
       <div className="loader mb-4"></div>
-      <style jsx>{`
+      <style>{`
         .loader {
           width: fit-content;
           margin: 0 auto;

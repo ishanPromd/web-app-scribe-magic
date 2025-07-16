@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { X, Save, Plus, Trash2, Edit, Image, Link, Palette } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlask, faCog, faGraduationCap, faBookOpen } from '@fortawesome/free-solid-svg-icons';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import { supabase } from '../../lib/supabase';
 import toast from 'react-hot-toast';
 
